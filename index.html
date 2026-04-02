@@ -1,0 +1,1880 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Instituto MD Talk — Programa de Proficiência em Inglês Médico</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0B1D3A;
+    --navy-deep: #050D1A;
+    --navy-mid: #0F2645;
+    --navy-light: #163158;
+    --navy-surface: #0A1929;
+    --gold: #C4A45A;
+    --gold-light: #D4BA7A;
+    --gold-pale: #E8D9B0;
+    --gold-glow: rgba(196,164,90,0.12);
+    --gold-faint: rgba(196,164,90,0.05);
+    --gold-line: rgba(196,164,90,0.18);
+    --white: #FFFFFF;
+    --off-white: #F6F4EF;
+    --cream: #FAF8F3;
+    --warm-gray: #9A9590;
+    --text-body: #3A3632;
+    --text-muted: #6B6560;
+    --border: rgba(11,29,58,0.06);
+    --border-gold: rgba(196,164,90,0.22);
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'Raleway', 'Helvetica Neue', Arial, sans-serif;
+    --radius: 4px;
+    --shadow-sm: 0 1px 4px rgba(11,29,58,0.04);
+    --shadow-md: 0 6px 24px rgba(11,29,58,0.07);
+    --shadow-lg: 0 16px 48px rgba(11,29,58,0.10);
+    --shadow-gold: 0 8px 32px rgba(196,164,90,0.12);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--off-white);
+    color: var(--text-body);
+    line-height: 1.7;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ═══════════════════════════════════════
+     HERO — CINEMATIC ENTRANCE
+     ═══════════════════════════════════════ */
+  .hero {
+    min-height: 92vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--navy-deep);
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+    padding: 60px 32px;
+  }
+
+  /* Layered atmospheric gradients */
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 70% 50% at 20% 20%, rgba(196,164,90,0.06) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 60% at 80% 80%, rgba(22,49,88,0.5) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 30% at 60% 10%, rgba(196,164,90,0.03) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  /* Grain texture */
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+
+  /* Decorative geometric elements */
+  .hero-geo {
+    position: absolute;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .hero-geo--ring {
+    width: 400px;
+    height: 400px;
+    border: 1px solid rgba(196,164,90,0.06);
+    border-radius: 50%;
+    top: -120px;
+    right: -80px;
+    animation: geoFloat 20s ease-in-out infinite;
+  }
+
+  .hero-geo--ring2 {
+    width: 280px;
+    height: 280px;
+    border: 1px solid rgba(196,164,90,0.04);
+    border-radius: 50%;
+    bottom: -60px;
+    left: -60px;
+    animation: geoFloat 24s ease-in-out infinite reverse;
+  }
+
+  .hero-geo--line {
+    width: 1px;
+    height: 160px;
+    background: linear-gradient(180deg, transparent, rgba(196,164,90,0.15), transparent);
+    top: 10%;
+    left: 12%;
+    animation: geoFloat 16s ease-in-out infinite;
+  }
+
+  .hero-geo--line2 {
+    width: 1px;
+    height: 120px;
+    background: linear-gradient(180deg, transparent, rgba(196,164,90,0.1), transparent);
+    bottom: 15%;
+    right: 10%;
+    animation: geoFloat 18s ease-in-out infinite reverse;
+  }
+
+  .hero-geo--diamond {
+    width: 16px;
+    height: 16px;
+    border: 1px solid rgba(196,164,90,0.12);
+    transform: rotate(45deg);
+    top: 25%;
+    right: 18%;
+    animation: geoPulse 6s ease-in-out infinite;
+  }
+
+  .hero-geo--diamond2 {
+    width: 10px;
+    height: 10px;
+    border: 1px solid rgba(196,164,90,0.08);
+    transform: rotate(45deg);
+    bottom: 30%;
+    left: 15%;
+    animation: geoPulse 8s ease-in-out infinite 2s;
+  }
+
+  @keyframes geoFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+
+  @keyframes geoPulse {
+    0%, 100% { opacity: 0.5; transform: rotate(45deg) scale(1); }
+    50% { opacity: 1; transform: rotate(45deg) scale(1.3); }
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    text-align: center;
+  }
+
+  .hero-overline {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: heroReveal 1s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards;
+  }
+
+  .hero-title {
+    font-family: var(--serif);
+    font-size: clamp(2.6rem, 6vw, 4.2rem);
+    font-weight: 300;
+    line-height: 1.1;
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: heroReveal 1s cubic-bezier(0.22, 1, 0.36, 1) 0.4s forwards;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    font-weight: 400;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-divider {
+    width: 48px;
+    height: 1px;
+    background: var(--gold);
+    margin: 0 auto 28px;
+    opacity: 0;
+    animation: heroReveal 1s cubic-bezier(0.22, 1, 0.36, 1) 0.55s forwards;
+  }
+
+  .hero-subtitle {
+    font-family: var(--sans);
+    font-size: 15px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.5);
+    max-width: 560px;
+    margin: 0 auto 52px;
+    line-height: 1.85;
+    letter-spacing: 0.3px;
+    opacity: 0;
+    animation: heroReveal 1s cubic-bezier(0.22, 1, 0.36, 1) 0.65s forwards;
+  }
+
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 56px;
+    opacity: 0;
+    animation: heroReveal 1s cubic-bezier(0.22, 1, 0.36, 1) 0.85s forwards;
+  }
+
+  .hero-stat {
+    text-align: center;
+    position: relative;
+  }
+
+  .hero-stat + .hero-stat::before {
+    content: '';
+    position: absolute;
+    left: -28px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 36px;
+    background: rgba(196,164,90,0.2);
+  }
+
+  .hero-stat-number {
+    font-family: var(--serif);
+    font-size: 2.8rem;
+    font-weight: 300;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .hero-stat-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+  }
+
+  .hero-scroll-hint {
+    position: absolute;
+    bottom: 36px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    opacity: 0;
+    animation: heroReveal 1s ease-out 1.4s forwards;
+  }
+
+  .hero-scroll-hint span {
+    display: block;
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(180deg, var(--gold), transparent);
+    margin: 0 auto;
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollPulse {
+    0% { transform: scaleY(0); transform-origin: top; }
+    50% { transform: scaleY(1); transform-origin: top; }
+    50.01% { transform-origin: bottom; }
+    100% { transform: scaleY(0); transform-origin: bottom; }
+  }
+
+  @keyframes heroReveal {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ═══════════════════════════════════════
+     NAV
+     ═══════════════════════════════════════ */
+  .sticky-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(246,244,239,0.92);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 24px;
+  }
+
+  .nav-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .nav-inner::-webkit-scrollbar { display: none; }
+
+  .nav-link {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    text-decoration: none;
+    padding: 18px 22px;
+    white-space: nowrap;
+    position: relative;
+    transition: color 0.3s ease;
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 22px;
+    right: 22px;
+    height: 2px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+  }
+
+  .nav-link:hover, .nav-link.active { color: var(--navy); }
+  .nav-link:hover::after, .nav-link.active::after { transform: scaleX(1); }
+
+  /* ═══════════════════════════════════════
+     SECTION ORNAMENTAL DIVIDER
+     ═══════════════════════════════════════ */
+  .ornament {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 0;
+  }
+
+  .ornament-line {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold-line));
+  }
+
+  .ornament-line:last-child {
+    background: linear-gradient(90deg, var(--gold-line), transparent);
+  }
+
+  .ornament-diamond {
+    width: 6px;
+    height: 6px;
+    background: var(--gold);
+    transform: rotate(45deg);
+    flex-shrink: 0;
+    opacity: 0.5;
+  }
+
+  /* ═══════════════════════════════════════
+     MAIN LAYOUT
+     ═══════════════════════════════════════ */
+  .main { max-width: 1020px; margin: 0 auto; padding: 0 32px; }
+
+  .section {
+    padding: 44px 0;
+  }
+
+  .section-overline {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 14px;
+  }
+
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(1.7rem, 3.5vw, 2.3rem);
+    font-weight: 400;
+    color: var(--navy);
+    line-height: 1.2;
+    margin-bottom: 14px;
+  }
+
+  .section-title em { font-style: italic; font-weight: 500; }
+
+  .section-lead {
+    font-size: 14.5px;
+    color: var(--text-muted);
+    max-width: 660px;
+    line-height: 1.8;
+    margin-bottom: 40px;
+  }
+
+  /* ═══════════════════════════════════════
+     FOUNDER
+     ═══════════════════════════════════════ */
+  .founder-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    padding: 48px 44px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .founder-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent 10%, var(--gold) 50%, transparent 90%);
+  }
+
+  .founder-card::after {
+    content: '';
+    position: absolute;
+    top: 44px;
+    right: 44px;
+    width: 80px;
+    height: 80px;
+    border: 1px solid var(--gold-line);
+    border-radius: 50%;
+    opacity: 0.4;
+    pointer-events: none;
+  }
+
+  .founder-header {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+
+  .founder-monogram {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--navy), var(--navy-mid));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 4px 16px rgba(11,29,58,0.2);
+  }
+
+  .founder-monogram span {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--gold);
+    letter-spacing: 2px;
+  }
+
+  .founder-name {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+
+  .founder-role {
+    font-size: 12.5px;
+    color: var(--text-muted);
+    line-height: 1.55;
+    letter-spacing: 0.2px;
+  }
+
+  .founder-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .founder-chevron {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .founder-chevron svg {
+    width: 16px;
+    height: 16px;
+    stroke: var(--gold);
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .founder-card.open .founder-chevron {
+    background: var(--gold-faint);
+    border-color: var(--border-gold);
+  }
+
+  .founder-card.open .founder-chevron svg {
+    transform: rotate(180deg);
+  }
+
+  .founder-bio-collapse {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .founder-card.open .founder-bio-collapse {
+    max-height: 600px;
+  }
+
+  .founder-bio {
+    padding-top: 28px;
+    margin-top: 24px;
+    border-top: 1px solid var(--border);
+  }
+
+  .founder-bio p {
+    font-size: 15px;
+    line-height: 1.9;
+    color: var(--text-body);
+    margin-bottom: 16px;
+  }
+
+  .founder-bio p:last-child { margin-bottom: 0; }
+
+  .founder-credentials {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 32px;
+    padding-top: 28px;
+    border-top: 1px solid var(--border);
+  }
+
+  .credential-tag {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--navy);
+    background: var(--gold-faint);
+    border: 1px solid var(--border-gold);
+    padding: 7px 16px;
+    border-radius: 20px;
+    letter-spacing: 0.4px;
+  }
+
+  /* ═══════════════════════════════════════
+     METHODOLOGY
+     ═══════════════════════════════════════ */
+  .method-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .method-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 30px 24px;
+    box-shadow: var(--shadow-sm);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .method-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .method-card:hover::before { transform: scaleX(1); }
+
+  .method-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-4px);
+    border-color: var(--border-gold);
+  }
+
+  .method-num {
+    font-family: var(--serif);
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--gold);
+    opacity: 0.4;
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .method-card h4 {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 10px;
+    line-height: 1.25;
+  }
+
+  .method-card p {
+    font-size: 13px;
+    line-height: 1.75;
+    color: var(--text-muted);
+  }
+
+  .method-summary {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 40px 36px;
+    box-shadow: var(--shadow-sm);
+    position: relative;
+  }
+
+  .method-summary::before {
+    content: '\201C';
+    font-family: var(--serif);
+    font-size: 6rem;
+    color: var(--gold);
+    opacity: 0.1;
+    position: absolute;
+    top: 10px;
+    left: 24px;
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .method-summary p {
+    font-size: 15.5px;
+    line-height: 1.9;
+    color: var(--text-body);
+    margin-bottom: 14px;
+    position: relative;
+  }
+
+  .method-summary p:last-of-type { margin-bottom: 0; }
+
+  .method-stats {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 36px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+  }
+
+  .method-stat {
+    text-align: center;
+    position: relative;
+  }
+
+  .method-stat + .method-stat::before {
+    content: '';
+    position: absolute;
+    left: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 28px;
+    background: var(--border-gold);
+  }
+
+  .method-stat-value {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 5px;
+  }
+
+  .method-stat-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    line-height: 1.3;
+  }
+
+  /* ═══════════════════════════════════════
+     ENGINE LAB
+     ═══════════════════════════════════════ */
+  .engine-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+  }
+
+  .engine-header {
+    background: linear-gradient(135deg, var(--navy-deep), var(--navy-surface));
+    padding: 32px 36px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .engine-header::before {
+    content: '';
+    position: absolute;
+    top: -50%; right: -20%;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    border: 1px solid rgba(196,164,90,0.06);
+    pointer-events: none;
+  }
+
+  .engine-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0.25;
+  }
+
+  .engine-logo-mark {
+    width: 54px; height: 54px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(196,164,90,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .engine-logo-mark span {
+    font-family: var(--serif);
+    font-size: 0.95rem;
+    color: var(--gold);
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+
+  .engine-brand-name {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--white);
+    position: relative;
+    z-index: 1;
+  }
+
+  .engine-brand-tag {
+    font-size: 11.5px;
+    color: rgba(255,255,255,0.4);
+    position: relative;
+    z-index: 1;
+    margin-top: 2px;
+  }
+
+  .engine-body { padding: 36px; }
+
+  .engine-body p {
+    font-size: 15px;
+    line-height: 1.9;
+    color: var(--text-body);
+    margin-bottom: 14px;
+  }
+
+  .engine-body p:last-of-type { margin-bottom: 0; }
+
+  .engine-leader {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 28px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+  }
+
+  .engine-leader-mono {
+    width: 50px; height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--navy), var(--navy-mid));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(11,29,58,0.15);
+  }
+
+  .engine-leader-mono span {
+    font-family: var(--serif);
+    font-size: 1rem;
+    color: var(--gold);
+  }
+
+  .engine-leader-name {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 2px;
+  }
+
+  .engine-leader-role {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  .engine-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+  }
+
+  .engine-tag {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--text-muted);
+    background: var(--off-white);
+    border: 1px solid var(--border);
+    padding: 5px 12px;
+    border-radius: 16px;
+    transition: all 0.3s ease;
+  }
+
+  .engine-tag:hover {
+    border-color: var(--border-gold);
+    background: var(--gold-faint);
+  }
+
+  .curadoria-block {
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border);
+  }
+
+  .curadoria-block .congress-link {
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+  }
+
+  .engine-body-card {
+    background: var(--white);
+    padding: 36px;
+  }
+
+  .engine-body-card p {
+    font-size: 15px;
+    line-height: 1.9;
+    color: var(--text-body);
+    margin-bottom: 14px;
+  }
+
+  .engine-body-card p:last-of-type { margin-bottom: 0; }
+
+  /* ═══════════════════════════════════════
+     CONGRESS LINK CARD
+     ═══════════════════════════════════════ */
+  .congress-link {
+    display: block;
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, var(--navy-light) 100%);
+    border-radius: var(--radius);
+    padding: 44px 40px;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    color: var(--white);
+    transition: box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .congress-link:hover { box-shadow: var(--shadow-lg), var(--shadow-gold); }
+
+  .congress-link::before {
+    content: '';
+    position: absolute;
+    top: -30%; right: -5%;
+    width: 320px; height: 320px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(196,164,90,0.08) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .congress-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0.3;
+  }
+
+  .congress-link-inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 28px;
+  }
+
+  .congress-link-content { flex: 1; }
+
+  .congress-overline {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  .congress-link-title {
+    font-family: var(--serif);
+    font-size: clamp(1.3rem, 2.5vw, 1.7rem);
+    font-weight: 400;
+    line-height: 1.3;
+    margin-bottom: 10px;
+  }
+
+  .congress-link-title em { font-style: italic; color: var(--gold-light); font-weight: 400; }
+
+  .congress-link-desc {
+    font-size: 13.5px;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.7;
+    max-width: 540px;
+  }
+
+  .congress-link-btn {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--gold);
+    color: var(--navy-deep);
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 16px 28px;
+    border-radius: 3px;
+    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .congress-link-btn:hover {
+    background: var(--gold-light);
+    box-shadow: 0 6px 24px rgba(196,164,90,0.35);
+  }
+
+  .congress-link-btn svg { width: 14px; height: 14px; transition: transform 0.3s ease; }
+  .congress-link:hover .congress-link-btn svg { transform: translateX(4px); }
+
+  /* ═══════════════════════════════════════
+     COURSES
+     ═══════════════════════════════════════ */
+  .courses-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .course-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 30px 24px;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .course-card::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .course-card:hover::before { transform: scaleX(1); }
+
+  .course-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-4px);
+  }
+
+  .course-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+
+  .course-badge-dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--gold);
+  }
+
+  .course-name {
+    font-family: var(--serif);
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 10px;
+    line-height: 1.25;
+  }
+
+  .course-desc {
+    font-size: 13px;
+    line-height: 1.75;
+    color: var(--text-muted);
+    flex-grow: 1;
+  }
+
+  .course-link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-decoration: none;
+    padding: 8px 0;
+    border-bottom: 1px solid transparent;
+    transition: all 0.3s ease;
+  }
+
+  .course-link-btn svg { width: 12px; height: 12px; transition: transform 0.3s ease; }
+
+  .course-link-btn:hover {
+    color: var(--navy);
+    border-bottom-color: var(--gold);
+  }
+
+  .course-link-btn:hover svg { transform: translateX(4px); }
+
+  /* ═══════════════════════════════════════
+     METHOD CTA (inline, elegant)
+     ═══════════════════════════════════════ */
+  .method-cta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 28px;
+    margin-top: 32px;
+    padding: 40px 36px;
+    background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy) 100%);
+    border-radius: var(--radius);
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+    overflow: hidden;
+    transition: box-shadow 0.5s ease;
+  }
+
+  .method-cta:hover { box-shadow: var(--shadow-lg), var(--shadow-gold); }
+
+  .method-cta::before {
+    content: '';
+    position: absolute;
+    top: -40%; right: -8%;
+    width: 260px; height: 260px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(196,164,90,0.07) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .method-cta::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0.35;
+  }
+
+  .method-cta-content { position: relative; z-index: 1; }
+
+  .method-cta-overline {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+
+  .method-cta-text {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--white);
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .method-cta-desc {
+    font-size: 13.5px;
+    color: rgba(255,255,255,0.45);
+  }
+
+  .method-cta-arrow {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--gold);
+    color: var(--navy-deep);
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 14px 24px;
+    border-radius: 3px;
+    flex-shrink: 0;
+    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .method-cta:hover .method-cta-arrow {
+    background: var(--gold-light);
+    box-shadow: 0 6px 24px rgba(196,164,90,0.35);
+  }
+
+  .method-cta-arrow svg { width: 13px; height: 13px; transition: transform 0.3s ease; }
+  .method-cta:hover .method-cta-arrow svg { transform: translateX(4px); }
+
+  /* ═══════════════════════════════════════
+     TESTIMONIALS
+     ═══════════════════════════════════════ */
+  .testimonials-section { padding: 44px 0; }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-top: 8px;
+  }
+
+  .testimonial-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px 24px;
+    box-shadow: var(--shadow-sm);
+    position: relative;
+    transition: all 0.35s ease;
+  }
+
+  .testimonial-card:hover {
+    box-shadow: var(--shadow-md);
+    border-color: var(--border-gold);
+  }
+
+  .testimonial-card::before {
+    content: '\201C';
+    font-family: var(--serif);
+    font-size: 3rem;
+    color: var(--gold);
+    opacity: 0.15;
+    position: absolute;
+    top: 12px;
+    left: 18px;
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .testimonial-text {
+    font-size: 13.5px;
+    line-height: 1.8;
+    color: var(--text-body);
+    margin-bottom: 20px;
+    position: relative;
+  }
+
+  .testimonial-author {
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+  }
+
+  .testimonial-name {
+    font-family: var(--serif);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 2px;
+  }
+
+  .testimonial-info {
+    font-size: 11.5px;
+    color: var(--text-muted);
+    line-height: 1.45;
+  }
+
+  .testimonials-more {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 24px;
+    padding: 14px 0;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--gold);
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-family: var(--sans);
+    transition: color 0.3s ease;
+  }
+
+  .testimonials-more:hover { color: var(--navy); }
+  .testimonials-more svg { width: 12px; height: 12px; transition: transform 0.3s ease; }
+  .testimonials-more.expanded svg { transform: rotate(180deg); }
+
+  .testimonials-hidden {
+    display: none;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-top: 16px;
+  }
+
+  .testimonials-hidden.show {
+    display: grid;
+  }
+
+  /* ═══════════════════════════════════════
+     CONTACT
+     ═══════════════════════════════════════ */
+  .contact-section { padding: 32px 0 44px; }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+
+  .contact-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 22px 20px;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .contact-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-3px);
+    border-color: var(--border-gold);
+  }
+
+  .contact-icon {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .contact-icon svg { width: 20px; height: 20px; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+  .contact-icon--ig { background: var(--off-white); border: 1px solid var(--border); }
+  .contact-icon--ig svg { stroke: var(--navy); }
+  .contact-icon--email { background: var(--off-white); border: 1px solid var(--border); }
+  .contact-icon--email svg { stroke: var(--navy); }
+  .contact-icon--wpp { background: var(--off-white); border: 1px solid var(--border); }
+  .contact-icon--wpp svg { stroke: var(--navy); }
+
+  .contact-label { font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--warm-gray); margin-bottom: 2px; }
+  .contact-value { font-size: 13px; font-weight: 600; color: var(--navy); }
+
+  /* ═══════════════════════════════════════
+     STUDENT HOME LINK
+     ═══════════════════════════════════════ */
+  .student-home-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    text-decoration: none;
+    color: inherit;
+    padding: 16px 32px;
+    border: 1px solid var(--border-gold);
+    border-radius: var(--radius);
+    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .student-home-link:hover {
+    border-color: var(--gold);
+    box-shadow: var(--shadow-md);
+    background: var(--white);
+  }
+
+  .student-home-label {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    color: var(--navy);
+    font-weight: 500;
+  }
+
+  .student-home-action {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .student-home-action svg { width: 12px; height: 12px; transition: transform 0.3s ease; }
+  .student-home-link:hover .student-home-action svg { transform: translateX(4px); }
+
+  /* ═══════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════ */
+  .footer {
+    background: var(--navy-deep);
+    text-align: center;
+    padding: 48px 24px;
+    position: relative;
+  }
+
+  .footer::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0.25;
+  }
+
+  .footer-brand {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    color: var(--gold);
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+  }
+
+  .footer-tagline {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 14px;
+    color: rgba(255,255,255,0.25);
+    margin-bottom: 20px;
+  }
+
+  .footer-copy { font-size: 10.5px; color: rgba(255,255,255,0.18); letter-spacing: 0.5px; }
+
+  /* ═══════════════════════════════════════
+     ANIMATIONS
+     ═══════════════════════════════════════ */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ═══════════════════════════════════════
+     RESPONSIVE
+     ═══════════════════════════════════════ */
+  @media (max-width: 768px) {
+    .hero { min-height: 80vh; padding: 48px 20px; }
+    .hero-stats { gap: 24px; flex-wrap: wrap; }
+    .hero-stat + .hero-stat::before { display: none; }
+    .hero-geo--ring, .hero-geo--ring2 { display: none; }
+    .hero-scroll-hint { display: none; }
+    .main { padding: 0 16px; }
+    .section { padding: 36px 0; }
+    .method-grid { grid-template-columns: 1fr; }
+    .method-stats { flex-wrap: wrap; gap: 24px; }
+    .method-stat + .method-stat::before { display: none; }
+    .method-cta { flex-direction: column; text-align: center; padding: 28px 22px; }
+    .method-cta-arrow { width: 100%; justify-content: center; }
+    .courses-grid { grid-template-columns: 1fr; }
+    .testimonials-grid, .testimonials-hidden { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .founder-card { padding: 32px 22px; }
+    .founder-card::after { display: none; }
+    .founder-header { flex-direction: column; text-align: center; }
+    .cta-card { flex-direction: column; text-align: center; padding: 32px 24px; }
+    .cta-btn { width: 100%; justify-content: center; }
+    .engine-body { padding: 24px 20px; }
+    .engine-header { padding: 24px 20px; }
+    .congress-link { padding: 28px 22px; }
+    .congress-link-inner { flex-direction: column; text-align: center; }
+    .congress-link-btn { width: 100%; justify-content: center; }
+    .nav-link { padding: 14px 14px; font-size: 9px; letter-spacing: 1.5px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════ HERO ═══════════ -->
+<header class="hero">
+  <div class="hero-geo hero-geo--ring"></div>
+  <div class="hero-geo hero-geo--ring2"></div>
+  <div class="hero-geo hero-geo--line"></div>
+  <div class="hero-geo hero-geo--line2"></div>
+  <div class="hero-geo hero-geo--diamond"></div>
+  <div class="hero-geo hero-geo--diamond2"></div>
+
+  <div class="hero-inner">
+    <p class="hero-overline">Instituto MD Talk</p>
+    <h1 class="hero-title">Programa de Proficiência em<br><em>Inglês Médico</em></h1>
+    <div class="hero-divider"></div>
+    <p class="hero-subtitle">Desenvolvido exclusivamente para médicos que desejam se comunicar com a mesma autoridade e maestria em inglês que já demonstram em português.</p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <p class="hero-stat-number" data-count="500">0</p>
+        <p class="hero-stat-label">Médicos atendidos</p>
+      </div>
+      <div class="hero-stat">
+        <p class="hero-stat-number" data-count="15">0</p>
+        <p class="hero-stat-label">Anos de ensino</p>
+      </div>
+      <div class="hero-stat">
+        <p class="hero-stat-number" data-count="8">0</p>
+        <p class="hero-stat-label">Anos dedicados à medicina</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-scroll-hint"><span></span></div>
+</header>
+
+<!-- ═══════════ NAV ═══════════ -->
+<nav class="sticky-nav">
+  <div class="nav-inner">
+    <a href="#fundadora" class="nav-link">Fundadora</a>
+    <a href="#metodologia" class="nav-link">Metodologia TMEP</a>
+    <a href="#cursos" class="nav-link">Cursos</a>
+    <a href="#contato" class="nav-link">Contato</a>
+  </div>
+</nav>
+
+<main class="main">
+
+  <!-- ═══════════ FOUNDER ═══════════ -->
+  <section id="fundadora" class="section">
+    <div class="reveal">
+      <div class="founder-card">
+        <div class="founder-toggle" onclick="this.closest('.founder-card').classList.toggle('open')">
+          <div>
+            <p class="section-overline" style="margin-bottom: 6px;">Fundadora e Diretora</p>
+            <h2 class="founder-name">Thaiana Martignoni Faria</h2>
+            <p class="founder-role">CEO e Fundadora do Instituto MD Talk<br>Linguista &bull; Especialista em Inglês Médico e Comunicação Científica Global</p>
+          </div>
+          <div class="founder-chevron">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </div>
+        </div>
+        <div class="founder-bio-collapse">
+          <div class="founder-bio">
+            <p>Com mais de 15 anos de ensino formal e ininterrupto do idioma inglês — dos quais 8 dedicados exclusivamente ao universo médico —, construí uma trajetória singular na interseção entre linguística aplicada e medicina.</p>
+            <p>Ao longo dessa jornada, mais de 500 profissionais da saúde passaram pela minha mentoria: de estudantes de medicina a chefes de departamento e diretoria de alguns dos principais hospitais de São Paulo. Minha atuação abrange desde a preparação para observerships e fellowships internacionais até o treinamento para apresentações em congressos de alcance global.</p>
+            <p>Idealizei o Método TMEP (Tailored Medical English Program), uma abordagem proprietária que alia rigor linguístico à realidade clínica, garantindo que cada profissional se comunique em inglês com a mesma precisão e autoridade que demonstra em português.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="ornament"><span class="ornament-line"></span><span class="ornament-diamond"></span><span class="ornament-line"></span></div>
+
+  <!-- ═══════════ METHODOLOGY ═══════════ -->
+  <section id="metodologia" class="section">
+    <div class="reveal">
+      <p class="section-overline">Método TMEP</p>
+      <h2 class="section-title"><em>Tailored Medical English Program</em></h2>
+      <p class="section-lead">Uma metodologia que desenvolvi ao longo de mais de 15 anos de ensino ininterrupto, pensada para que o médico aprenda o inglês que de fato precisa — no ritmo, no contexto e na profundidade que a sua carreira exige.</p>
+      <p class="section-lead" style="margin-top: -24px;">O objetivo do TMEP é claro: fazer com que o médico seja em inglês o mesmo leão que já é em português. Que transmita no segundo idioma a mesma autoridade, o mesmo domínio e o mesmo conhecimento que exerce com maestria na língua materna.</p>
+      <p class="section-lead" style="margin-top: -24px;">As aulas têm duração de 50 minutos e podem ser realizadas 1 ou 2 vezes por semana, conforme a disponibilidade e os objetivos do aluno. Essa metodologia não nasceu da teoria — foi construída, refinada e validada ao longo de mais de 15 anos ininterruptos de ensino, no contato direto com centenas de médicos em diferentes estágios de carreira.</p>
+    </div>
+
+    <div class="method-grid reveal">
+      <div class="method-card">
+        <p class="method-num">01</p>
+        <h4>Base Conversacional</h4>
+        <p>O alicerce de cada aula é a conversação. O aluno fala, pratica, erra e se corrige em tempo real, desenvolvendo fluência natural e confiança comunicativa desde o primeiro encontro.</p>
+      </div>
+      <div class="method-card">
+        <p class="method-num">02</p>
+        <h4>Multinível Simultâneo</h4>
+        <p>Não sigo um material de maneira linear. Navego por todos os níveis ao mesmo tempo — do elementary ao advanced plus (A1 a C2) — conforme a necessidade de cada aluno. Quando trabalho um ponto, abordo todas as suas nuances, trespassando todos os níveis em um compilado completo, para que o aluno tenha uma visão integral daquele tema.</p>
+      </div>
+      <div class="method-card">
+        <p class="method-num">03</p>
+        <h4>Gramática Aplicada à Clínica</h4>
+        <p>Cada ponto gramatical é conectado a pelo menos um item da prática clínica, demonstrando a relevância direta daquela estrutura no dia a dia profissional do médico.</p>
+      </div>
+      <div class="method-card">
+        <p class="method-num">04</p>
+        <h4>Cronograma Individualizado</h4>
+        <p>Crio um cronograma exclusivo para cada aluno, com temas da sua área de atuação e assuntos do seu interesse. Cada médico tem um programa genuinamente seu.</p>
+      </div>
+      <div class="method-card">
+        <p class="method-num">05</p>
+        <h4>Simulações de Alta Pressão</h4>
+        <p>Simulações em cenários reais — observership, fellowship, congressos internacionais, atendimento a pacientes estrangeiros — para que o aluno se comunique com precisão mesmo sob pressão.</p>
+      </div>
+      <div class="method-card">
+        <p class="method-num">06</p>
+        <h4>Hard Skills e Soft Skills</h4>
+        <p>Trabalho tanto a precisão lexical e técnica quanto as habilidades comunicativas que fazem o profissional transmitir autoridade, empatia e domínio — em qualquer idioma.</p>
+      </div>
+    </div>
+
+    <a href="https://forms.office.com/r/GaVkBs9CfR" target="_blank" rel="noopener" class="method-cta reveal">
+      <div class="method-cta-content">
+        <p class="method-cta-overline">Próximo passo</p>
+        <span class="method-cta-text">Tem interesse em saber mais detalhes?</span>
+        <p class="method-cta-desc">Preencha o formulário e eu entro em contato com todos os detalhes.</p>
+      </div>
+      <span class="method-cta-arrow">
+        Preencher formulário
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+      </span>
+    </a>
+  </section>
+
+  <div class="ornament"><span class="ornament-line"></span><span class="ornament-diamond"></span><span class="ornament-line"></span></div>
+
+  <section id="cursos" class="section">
+    <div class="reveal">
+      <p class="section-overline">Programas Complementares</p>
+      <h2 class="section-title">Outros Programas Disponíveis</h2>
+      <p class="section-lead">Programas que desenvolvi para necessidades específicas, todos com o DNA do Instituto MD Talk.</p>
+    </div>
+
+    <!-- Congress / Training link -->
+    <a href="https://institutomdtalk.github.io/treinamento/" target="_blank" rel="noopener" class="congress-link reveal" style="margin-bottom: 20px;">
+      <div class="congress-link-inner">
+        <div class="congress-link-content">
+          <p class="congress-overline">Preparação para Congressos Internacionais</p>
+          <h2 class="congress-link-title">Apresente seu trabalho científico com <em>precisão e autoridade</em></h2>
+          <p class="congress-link-desc">Programa estruturado em 4 fases — da fundação linguística à simulação de performance no palco. Conheça todos os detalhes na página do treinamento.</p>
+        </div>
+        <span class="congress-link-btn">
+          Conhecer o programa
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+        </span>
+      </div>
+    </a>
+
+    <!-- Curadoria + Engine Lab -->
+    <a href="https://forms.office.com/r/GaVkBs9CfR" target="_blank" rel="noopener" class="congress-link reveal" style="margin-bottom: 20px;">
+      <div class="congress-link-inner">
+        <div class="congress-link-content">
+          <p class="congress-overline">Parceria Exclusiva</p>
+          <h2 class="congress-link-title">Curadoria de Conteúdo + <em>The Engine Lab</em></h2>
+          <p class="congress-link-desc">Sistema de curadoria pensado para médicos que desejam aprender inglês, mas não dispõem do tempo que gostariam. Conteúdo self-study semanal com casos clínicos da sua área.</p>
+        </div>
+        <span class="congress-link-btn">
+          Saiba mais
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+        </span>
+      </div>
+    </a>
+
+    <div class="courses-grid reveal">
+      <div class="course-card">
+        <div class="course-badge"><span class="course-badge-dot"></span> Programa de aulas fracionadas</div>
+        <h3 class="course-name">Kairos</h3>
+        <p class="course-desc">A mesma metodologia TMEP e proposta do programa original, mas com aulas fracionadas de 25 minutos. Ideal para quem deseja se expor ao idioma com mais frequência, sem sobrecarregar a agenda.</p>
+        <a href="https://institutomdtalk.github.io/kairos/" target="_blank" rel="noopener" class="course-link-btn">Saiba mais <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
+      </div>
+
+      <div class="course-card">
+        <div class="course-badge"><span class="course-badge-dot"></span> Superando o platô do intermediário</div>
+        <h3 class="course-name">Projeto Aquiles</h3>
+        <p class="course-desc">Para quem já fala inglês, mas precisa romper o platô do intermediário. São 13 pontos gramaticais desenvolvidos para quem se comunica com conforto, mas deseja mais precisão e compreensão das nuances — evitando mal-entendidos, especialmente no ambiente profissional. Requer teste de nivelamento e consulta inicial.</p>
+        <a href="https://institutomdtalk.github.io/projetoaquiles/" target="_blank" rel="noopener" class="course-link-btn">Saiba mais <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
+      </div>
+
+      <div class="course-card">
+        <div class="course-badge"><span class="course-badge-dot"></span> Curso completo de inglês para viagens</div>
+        <h3 class="course-name">Viaje Bem</h3>
+        <p class="course-desc">Curso completo de inglês voltado para viagens, dividido em 8 módulos — do check-in no aeroporto a qualquer problema de saúde que possa surgir no exterior. Prático, direto e com acesso imediato.</p>
+        <a href="https://institutomdtalk.github.io/viajebem/" target="_blank" rel="noopener" class="course-link-btn">Saiba mais <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ TESTIMONIALS ═══════════ -->
+  <section id="depoimentos" class="testimonials-section">
+    <div class="reveal">
+      <p class="section-overline">O que dizem sobre o Instituto MD Talk</p>
+    </div>
+
+    <div class="testimonials-grid reveal">
+
+      <div class="testimonial-card">
+        <p class="testimonial-text">Professora didática, engraçada e paciente. Ajusta os assuntos conforme sua rotina/profissão e estrutura a aula de acordo com sua motivação do dia. Aulas realmente personalizadas.</p>
+        <div class="testimonial-author">
+          <p class="testimonial-name">Ana Paula Rondina</p>
+          <p class="testimonial-info">Oncologista — AC Camargo Cancer Center, São Paulo</p>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <p class="testimonial-text">As aulas são dinâmicas, variando entre leitura, gramática, vocabulário, muitas vezes direcionadas para minha área de interesse, que é o inglês médico. Thai, além de professora, é parceira e foi muito importante para que eu conseguisse meu observership no Canadá, me ajudando em todo o processo, inclusive com a viagem!</p>
+        <div class="testimonial-author">
+          <p class="testimonial-name">Isadora Martins</p>
+          <p class="testimonial-info">Oncologista — AC Camargo Cancer Center, São Paulo</p>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <p class="testimonial-text">Melhor professora de inglês da vida! Ela tem o dom do ensino. É muito dedicada, organizada, criativa e paciente. É uma teacher incrível, compreensiva e acolhedora que mudou a minha forma de lidar com o aprendizado do inglês.</p>
+        <div class="testimonial-author">
+          <p class="testimonial-name">Danielle Duarte Souza</p>
+          <p class="testimonial-info">Hematologista — Santa Casa de Misericórdia, São Paulo</p>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <p class="testimonial-text">As aulas são ótimas! Você personalizar cada aula de acordo com a necessidade que tenho e também com a minha disposição no dia. Evoluí muito no inglês em pouco tempo e senti muita diferença principalmente na parte acadêmica e na segurança em falar inglês.</p>
+        <div class="testimonial-author">
+          <p class="testimonial-name">Thais Araujo</p>
+          <p class="testimonial-info">Hematologista — Hospital 9 de Julho, São Paulo</p>
+        </div>
+      </div>
+
+    </div>
+
+    <button class="testimonials-more" onclick="document.querySelector('.testimonials-hidden').classList.toggle('show'); this.classList.toggle('expanded');">
+      Ver mais depoimentos
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+
+    <div class="testimonials-hidden">
+
+      <div class="testimonial-card">
+        <p class="testimonial-text">As aulas com a Teacher Thaiana sempre foram incríveis, nossas sextas à noite sempre foram regadas de muito inglês, de forma leve e descontraída! Além de incrementar nosso inglês, descobrimos uma amiga!</p>
+        <div class="testimonial-author">
+          <p class="testimonial-name">Bárbara Monteiro</p>
+          <p class="testimonial-info">Anestesiologista — UFES, Vitória</p>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <p class="testimonial-text">Aulas maravilhosas! Dinâmicas, cuidadosamente preparadas para a nossa área de atuação. Com certeza fizeram muita diferença no meu estágio no exterior! Sempre muito carinhosa e disposta a nos ajudar.</p>
+        <div class="testimonial-author">
+          <p class="testimonial-name">Carolina Perrone</p>
+          <p class="testimonial-info">Hematologista — Hospital Israelita Albert Einstein, São Paulo</p>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <p class="testimonial-text">Minha experiência é a melhor possível. Estou aprendendo muito com você! Você tem uma didática incrível! Me estimula cada vez mais!</p>
+        <div class="testimonial-author">
+          <p class="testimonial-name">Brunna Souza</p>
+          <p class="testimonial-info">Oncologista — AC Camargo Cancer Center, São Paulo</p>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <p class="testimonial-text">Teacher Thaiana é a melhor! Tem uma excelente didática, sempre disponível e atenciosa! Adequa as aulas de inglês para as necessidades específicas de cada aluno. Além de tudo, uma pessoa incrível!</p>
+        <div class="testimonial-author">
+          <p class="testimonial-name">Louise Chateaubriand</p>
+          <p class="testimonial-info">Dermatologista — UNIFESP, São Paulo</p>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <p class="testimonial-text">Aulas didáticas, criativas, com conteúdos ricos e extremamente bem elaborados! Professora competente, simpática e muito apta!</p>
+        <div class="testimonial-author">
+          <p class="testimonial-name">Ana Mendes</p>
+          <p class="testimonial-info">Oncologista e Intensivista — AC Camargo Cancer Center, São Paulo</p>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <p class="testimonial-text">Sou residente de oncologia e estou no último ano da residência. Conheci a Thaiana através de colegas que a indicaram como uma professora com bastante conhecimento em vocabulário médico. A Thaiana ajudou em cada etapa, desde a busca pelos hospitais até a hora de escrever os emails. Eu fui fazer o estágio no Canadá e achei que foi uma experiência sensacional, recomendo as aulas de inglês pra vida!</p>
+        <div class="testimonial-author">
+          <p class="testimonial-name">Risia Pecinali</p>
+          <p class="testimonial-info">Oncologista — AC Camargo Cancer Center, São Paulo</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════ CONTACT ═══════════ -->
+  <section id="contato" class="contact-section">
+    <p class="section-overline reveal" style="margin-bottom: 20px;">Contato</p>
+    <div class="contact-grid reveal">
+      <a href="https://instagram.com/inglesmedico.thaifaria" target="_blank" rel="noopener" class="contact-card">
+        <div class="contact-icon contact-icon--ig">
+          <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><path d="M17.5 6.5h.01"/></svg>
+        </div>
+        <div>
+          <p class="contact-label">Instagram</p>
+          <p class="contact-value">@inglesmedico.thaifaria</p>
+        </div>
+      </a>
+      <a href="mailto:mdtalk.office@gmail.com" class="contact-card">
+        <div class="contact-icon contact-icon--email">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <div>
+          <p class="contact-label">E-mail</p>
+          <p class="contact-value">mdtalk.office@gmail.com</p>
+        </div>
+      </a>
+      <a href="https://wa.me/5514997758941" target="_blank" rel="noopener" class="contact-card">
+        <div class="contact-icon contact-icon--wpp">
+          <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+        </div>
+        <div>
+          <p class="contact-label">WhatsApp</p>
+          <p class="contact-value">Enviar mensagem</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ═══════════ STUDENT HOME LINK ═══════════ -->
+  <section class="section" style="padding: 20px 0 32px; text-align: center;">
+    <a href="https://institutomdtalk.github.io/home/" target="_blank" rel="noopener" class="student-home-link reveal">
+      <span class="student-home-label">Já é aluno?</span>
+      <span class="student-home-action">Acessar a Home do Aluno <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></span>
+    </a>
+  </section>
+
+</main>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer class="footer">
+  <p class="footer-brand">Instituto MD Talk</p>
+  <p class="footer-tagline">Precisão linguística para a excelência médica.</p>
+  <p class="footer-copy">&copy; 2026 Instituto MD Talk &bull; The Engine Lab — Todos os direitos reservados.</p>
+</footer>
+
+<!-- ═══════════ SCRIPTS ═══════════ -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+  // ── Scroll Reveal with stagger ──
+  const reveals = document.querySelectorAll('.reveal');
+  let revealDelay = 0;
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.transitionDelay = '0.08s';
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.06, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(el => revealObserver.observe(el));
+
+  // ── Animated counters with easing ──
+  const counters = document.querySelectorAll('[data-count]');
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const target = parseInt(el.dataset.count);
+        const prefix = target >= 500 ? '+' : '';
+        const duration = 2200;
+        const startTime = performance.now();
+
+        function animate(now) {
+          const elapsed = now - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 4);
+          const current = Math.round(eased * target);
+          el.textContent = prefix + current;
+          if (progress < 1) requestAnimationFrame(animate);
+        }
+
+        requestAnimationFrame(animate);
+        counterObserver.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+  counters.forEach(el => counterObserver.observe(el));
+
+  // ── Active nav on scroll ──
+  const navLinks = document.querySelectorAll('.nav-link');
+  const sections = document.querySelectorAll('section[id]');
+
+  const navObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(l => l.classList.remove('active'));
+        const active = document.querySelector(`.nav-link[href="#${entry.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { threshold: 0.2, rootMargin: '-80px 0px -50% 0px' });
+  sections.forEach(s => navObserver.observe(s));
+
+  // ── Parallax-like geo elements ──
+  const geos = document.querySelectorAll('.hero-geo');
+  window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    if (scrollY < window.innerHeight) {
+      geos.forEach((geo, i) => {
+        const speed = 0.02 + (i * 0.008);
+        geo.style.transform = `translateY(${scrollY * speed}px)`;
+      });
+    }
+  }, { passive: true });
+
+});
+</script>
+
+</body>
+</html>
